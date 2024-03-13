@@ -39,7 +39,7 @@ class _ProjectSixthState extends State<ProjectSixth> {
       Task updatedTask = Task(
         taskId: widget.taskId,
         task_description: taskDescription,
-        moduleId: '', projectID: '', // Provide a default or empty value for moduleId if it's not needed
+        moduleId: '', projectID: '',
       );
 
 
@@ -50,8 +50,7 @@ class _ProjectSixthState extends State<ProjectSixth> {
         content: Text('Task description updated successfully'),
       ));
 
-      // Navigate back to the previous screen
-      Navigator.pop(context, true); // Pass a result indicating success
+      Navigator.pop(context, true);
     } catch (e) {
 
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

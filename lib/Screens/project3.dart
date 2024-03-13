@@ -159,7 +159,6 @@ class _ProjectThirdState extends State<ProjectThird> {
                         ApiService.deleteModule(module.module_id)
                             .then((_) {})
                             .catchError((error) {
-                          // Handle error
                           setState(() {
                             modules.add(module);
                           });

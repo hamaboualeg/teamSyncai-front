@@ -48,14 +48,12 @@ class _ProjectSecondState extends State<ProjectSecond> {
         members: memberList,
       );
 
-      // Call your API service to create the project
       Map<String, dynamic>? projectData = await ApiService.createProject(project);
 
 
       if (projectData != null && projectData.containsKey('projectID')) {
         String projectId = projectData['projectID'];
 
-        // After successful creation, navigate to the third screen
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => ProjectThird(
@@ -69,9 +67,6 @@ class _ProjectSecondState extends State<ProjectSecond> {
             ),
           ),
         );
-
-        // Navigate to the fourth screen
-
       } else {
         throw Exception('Project data is null or does not contain projectID field');
       }

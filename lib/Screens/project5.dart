@@ -78,7 +78,6 @@ class _ProjectFifthState extends State<ProjectFifth> {
               ),
               controller: _moduleNameController,
               onChanged: (value) {
-                // You can do something here if you need to track changes in the TextField
               },
             ),
             const SizedBox(height: 16),
@@ -184,7 +183,7 @@ class _ProjectFifthState extends State<ProjectFifth> {
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
-                  Navigator.pop(context); // Ensure you're popping only once
+                  Navigator.pop(context);
                 },
                 child: const Text('OK'),
               ),
@@ -193,7 +192,6 @@ class _ProjectFifthState extends State<ProjectFifth> {
         },
       );
 
-      // Fetch modules again after updating
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('Failed to update module name'),
@@ -211,7 +209,7 @@ class _ProjectFifthState extends State<ProjectFifth> {
     );
 
     if (result == true) {
-      fetchTasks(); // Fetch tasks again
+      fetchTasks();
     }
   }
 }

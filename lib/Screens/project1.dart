@@ -120,7 +120,7 @@ class _ProjectFirstState extends State<ProjectFirst> {
                   child: const Text(
                     'Next',
                     style: TextStyle(
-                      color: Colors.white, // Text color
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -142,12 +142,12 @@ class _ProjectFirstState extends State<ProjectFirst> {
       builder: (BuildContext context, Widget? child) {
         return Theme(
           data: ThemeData.light().copyWith(
-            primaryColor: const Color(0xFFE89F16), // Header background color
-            colorScheme: ColorScheme.light(
-              primary: const Color(0xFFE89F16), // Circle background color
-              onPrimary: Colors.white, // Selected date color
+            primaryColor: const Color(0xFFE89F16),
+            colorScheme: const ColorScheme.light(
+              primary: Color(0xFFE89F16),
+              onPrimary: Colors.white,
             ),
-            buttonTheme: ButtonThemeData(
+            buttonTheme: const ButtonThemeData(
               textTheme: ButtonTextTheme.primary,
             ),
           ),
