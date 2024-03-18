@@ -224,7 +224,7 @@ class _ProjectThirdState extends State<ProjectThird> {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
-                child: const Text("OK", style: TextStyle(color: Colors.white)),
+                child: const Text("Confirm", style: TextStyle(color: Colors.white)),
               ),
             ),
           ],
