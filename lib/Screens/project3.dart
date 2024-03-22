@@ -61,6 +61,28 @@ class _ProjectThirdState extends State<ProjectThird> {
     await fetchModules();
   }
 
+  Future<void> _addDefaultModule() async {
+    print("Adding default module...");
+    setState(() {
+      isLoading = true;
+    });
+    try {
+      Module newModule = await ApiService.createDefaultModule(widget.projectId);
+      print("Default module added successfully");
+      setState(() {
+        modules.add(newModule);
+        isLoading = false;
+      });
+    } catch (e) {
+      print("Error adding default module: $e");
+      setState(() {
+        isLoading = false;
+      });
+      // Handle error
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -147,8 +169,15 @@ class _ProjectThirdState extends State<ProjectThird> {
                     : modules.isEmpty
                     ? const Center(child: Text('No modules found'))
                     : ListView.builder(
-                  itemCount: modules.length,
+                  itemCount: modules.length + 1, // Add 1 for the Add button
                   itemBuilder: (context, index) {
+                    if (index == modules.length) {
+                      // Last item, show Add button
+                      return IconButton(
+                        icon: Icon(Icons.add),
+                        onPressed: _addDefaultModule,
+                      );
+                    }
                     final module = modules[index];
                     return Dismissible(
                       key: Key(module.module_id),

@@ -167,8 +167,7 @@ class _ProjectFifthState extends State<ProjectFifth> {
     try {
       Module updatedModule = Module(
         module_id: widget.moduleId,
-        module_name: _moduleNameController.text,
-        taskIds: [],
+        module_name: _moduleNameController.text, projectID: '',
       );
 
       await ApiService.updateModule(widget.moduleId, updatedModule);

@@ -140,5 +140,27 @@ class ApiService {
     }
   }
 
+  static Future<Module> createDefaultModule(String projectId) async {
+    try {
+      final response = await http.post(
+        Uri.parse('$baseURL/modules/defaultM'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode({'projectId': projectId}),
+      );
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> responseData = jsonDecode(response.body);
+        final Map<String, dynamic> moduleData = responseData['module'];
+        return Module.fromJson(moduleData);
+      } else {
+        throw Exception('Failed to create default module');
+      }
+    } catch (e) {
+      throw Exception('Error creating default module: $e');
+    }
+  }
+
 
 }

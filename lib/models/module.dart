@@ -1,19 +1,20 @@
 class Module {
-  final String module_id;
+  final String module_id; // Assuming you're storing _id as a String in Flutter
   final String module_name;
-  List<String> taskIds;
+  final String projectID; // Add projectID property
+
 
   Module({
     required this.module_id,
     required this.module_name,
-    required this.taskIds,
+    required this.projectID, // Initialize projectID in the constructor
   });
 
   Map<String, dynamic> toJson() {
     return {
-      '_id': module_id,
+      '_id': module_id, // Sending module_id back to backend as _id
       'module_name': module_name,
-      'taskIds': taskIds,
+      'projectID': projectID, // Include projectID in JSON
     };
   }
 
@@ -21,7 +22,8 @@ class Module {
     return Module(
       module_id: json['_id'],
       module_name: json['module_name'],
-      taskIds: List<String>.from(json['taskIds'] ?? []),
+      projectID: json['projectID'], // Initialize projectID from JSON
+
     );
   }
 }
