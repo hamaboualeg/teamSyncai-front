@@ -169,10 +169,9 @@ class _ProjectThirdState extends State<ProjectThird> {
                     : modules.isEmpty
                     ? const Center(child: Text('No modules found'))
                     : ListView.builder(
-                  itemCount: modules.length + 1, // Add 1 for the Add button
+                  itemCount: modules.length + 1,
                   itemBuilder: (context, index) {
                     if (index == modules.length) {
-                      // Last item, show Add button
                       return IconButton(
                         icon: Icon(Icons.add),
                         onPressed: _addDefaultModule,

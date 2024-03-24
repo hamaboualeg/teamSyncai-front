@@ -124,10 +124,9 @@ class _ProjectFifthState extends State<ProjectFifth> {
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: tasks.length + 1, // Add 1 for the IconButton
+              itemCount: tasks.length + 1,
               itemBuilder: (context, index) {
                 if (index == tasks.length) {
-                  // Last item, show IconButton to add default task
                   return IconButton(
                     icon: Icon(Icons.add),
                     onPressed: _addDefaultTask,

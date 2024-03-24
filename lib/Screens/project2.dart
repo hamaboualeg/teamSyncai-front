@@ -51,7 +51,7 @@ class _ProjectSecondState extends State<ProjectSecond> {
       Map<String, dynamic>? projectData = await ApiService.createProject(project);
 
 
-      if (projectData != null && projectData.containsKey('projectID')) {
+      if (projectData.containsKey('projectID')) {
         String projectId = projectData['projectID'];
 
         Navigator.of(context).push(

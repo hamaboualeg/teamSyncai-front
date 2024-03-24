@@ -22,7 +22,6 @@ class ApiService {
         final Map<String, dynamic> responseData = jsonDecode(response.body);
         final Map<String, dynamic> projectData = responseData['project'];
         if (projectData.containsKey('_id')) {
-          // Extract the projectID from the _id field
           String projectId = projectData['_id'];
           return {'projectID': projectId};
         } else {
