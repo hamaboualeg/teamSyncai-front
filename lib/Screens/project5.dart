@@ -7,8 +7,9 @@ import '../models/task.dart';
 class ProjectFifth extends StatefulWidget {
   final String moduleId;
   final String moduleName;
+  final String projectId;
 
-  const ProjectFifth({Key? key, required this.moduleId, required this.moduleName})
+  const ProjectFifth({Key? key, required this.moduleId, required this.moduleName, required this.projectId})
       : super(key: key);
 
   @override
@@ -46,6 +47,27 @@ class _ProjectFifthState extends State<ProjectFifth> {
       });
     }
   }
+  // Inside the _ProjectFifthState class
+  Future<void> _addDefaultTask() async {
+    try {
+      setState(() {
+        isLoading = true;
+      });
+
+      Task newTask = await ApiService.createDefaultTask(widget.projectId, widget.moduleId);
+      setState(() {
+        tasks.add(newTask);
+        isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+      // Handle error
+      print("Error adding default task: $e");
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -102,8 +124,15 @@ class _ProjectFifthState extends State<ProjectFifth> {
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: tasks.length,
+              itemCount: tasks.length + 1, // Add 1 for the IconButton
               itemBuilder: (context, index) {
+                if (index == tasks.length) {
+                  // Last item, show IconButton to add default task
+                  return IconButton(
+                    icon: Icon(Icons.add),
+                    onPressed: _addDefaultTask,
+                  );
+                }
                 Task task = tasks[index];
                 return GestureDetector(
                   onTap: () {
@@ -157,6 +186,7 @@ class _ProjectFifthState extends State<ProjectFifth> {
                 );
               },
             ),
+
           ],
         ),
       ),

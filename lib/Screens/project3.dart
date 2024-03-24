@@ -221,6 +221,7 @@ class _ProjectThirdState extends State<ProjectThird> {
                                 builder: (context) => ProjectFifth(
                                   moduleId: module.module_id,
                                   moduleName: module.module_name,
+                                  projectId: widget.projectId,
                                 ),
                               ),
                             ).then((value) {

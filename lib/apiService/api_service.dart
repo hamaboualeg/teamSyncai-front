@@ -162,5 +162,28 @@ class ApiService {
     }
   }
 
+  static Future<Task> createDefaultTask(String projectId, String moduleId) async {
+    try {
+      final response = await http.post(
+        Uri.parse('$baseURL/tasks/defaultT'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode({'projectID': projectId, 'module_id': moduleId}),
+      );
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> responseData = jsonDecode(response.body);
+        final Map<String, dynamic> taskData = responseData['task'];
+        return Task.fromJson(taskData);
+      } else {
+        throw Exception('Failed to create default task');
+      }
+    } catch (e) {
+      throw Exception('Error creating default task: $e');
+    }
+  }
+
+
 
 }
